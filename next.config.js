@@ -4,6 +4,7 @@
  */
 import "./src/env.js";
 
+
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
@@ -17,6 +18,7 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  transpilePackages: ["next-auth"],
 };
 
 export default config;
