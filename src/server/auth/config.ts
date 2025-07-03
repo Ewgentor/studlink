@@ -5,6 +5,8 @@ import GoogleProvider from "next-auth/providers/google"
 
 import { db } from "~/server/db";
 
+export type UserRole = "student" | "company" | "admin"
+
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -16,7 +18,7 @@ declare module "next-auth" {
     user: {
       id: string;
       // ...other properties
-      // role: UserRole;
+      role: UserRole;
     } & DefaultSession["user"];
   }
 
@@ -35,15 +37,6 @@ export const authConfig = {
   providers: [
     GithubProvider,
     GoogleProvider,
-    /**
-     * ...add more providers here.
-     *
-     * Most other providers require a bit more work than the Discord provider. For example, the
-     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-     *
-     * @see https://next-auth.js.org/providers/github
-     */
   ],
   adapter: PrismaAdapter(db),
   callbacks: {
