@@ -16,9 +16,11 @@ model Project {
   title       String  
   description String  
   budget      String  
-  deadline    DateTime  
+  deadline    DateTime
+  category    String  
   company     User   @relation(fields: [companyId], references: [id])  
-  companyId   String  
+  companyId   String
+  createdAt   DateTime @default(now())  
   bids        Bid[]  
 }  
 
@@ -28,7 +30,8 @@ model Bid {
   student   User   @relation(fields: [studentId], references: [id])  
   studentId String  
   project   Project @relation(fields: [projectId], references: [id])  
-  projectId String  
+  projectId String
+  createdAt DateTime @default(now())    
   status    String // "pending", "accepted", "rejected"  
 }  
 
@@ -67,12 +70,14 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     image         String?
-    role     String @default("student") // "student", "company", "admin"
-    bio      String?    
+    role          String @default("student") // "student", "company", "admin"
+    bio           String?
+    rating        Float @default(0)
+    skills        String[]  //"Бэкенд", "фронтэнд", "ML" и т.п.
     accounts      Account[]
     sessions      Session[]
-    projects Project[]
-    bids     Bid[] 
+    projects      Project[]
+    bids          Bid[] 
 }
 
 model VerificationToken {

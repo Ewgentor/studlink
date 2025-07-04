@@ -7,6 +7,14 @@ import {
 } from "~/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
+  getAll: protectedProcedure
+    .query(async ({ctx}) => {
+      const projects = await ctx.db.project.findMany({
+        orderBy: {createdAt: "desc"}
+      })
+      return projects ?? null
+    }),
+
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {

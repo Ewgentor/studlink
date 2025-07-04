@@ -6,7 +6,7 @@ import { api } from "~/utils/api";
 
 export default function Home() {
   const hello = api.post.hello.useQuery({ text: "from tRPC" });
-
+  const projects = api.post.getAll.useQuery();
   return (
     <>
       <Head>
@@ -49,6 +49,12 @@ export default function Home() {
             </p>
             <AuthShowcase />
           </div>
+          <div>
+            {projects.data?.map((projects) => (<div key={projects.id}>{projects.title}</div>))}
+          </div>
+          <div>
+            {}
+          </div>
         </div>
       </main>
     </>
@@ -56,8 +62,7 @@ export default function Home() {
 }
 
 function AuthShowcase() {
-  const { data: sessionData } = useSession();
-
+  const { data: sessionData,status } = useSession();
   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
     undefined, // no input
     { enabled: sessionData?.user !== undefined },
