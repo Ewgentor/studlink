@@ -15,7 +15,7 @@ model Project {
   id          String @id @default(cuid())  
   title       String  
   description String  
-  budget      String  
+  budget      Float  
   deadline    DateTime
   category    String  
   company     User   @relation(fields: [companyId], references: [id])  

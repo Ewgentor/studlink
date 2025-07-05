@@ -42,6 +42,28 @@ export const postRouter = createTRPCRouter({
 
   //   return post ?? null;
   // }),
+  
+  createPost: protectedProcedure
+    .input(z.object({
+      title: z.string(),
+      category: z.string(),
+      deadline: z.string(),
+      budget: z.number(),
+      description: z.string(),
+      companyId: z.string(),
+    }))
+    .mutation(async ({ctx, input}) => {
+      return ctx.db.project.create({
+        data: {
+          title: input.title,
+          description: input.description,
+          budget: input.budget,
+          deadline: input.deadline,
+          category: input.category,
+          companyId: input.companyId,
+        }
+      })
+    }),
 
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";
