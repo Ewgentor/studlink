@@ -25,14 +25,12 @@ export default function Test(){
 }
 
 export function AuthForm(){
-    const router = useRouter();
     const { data: session } = useSession();
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [deadline, setDeadline] = useState("");
     const [budget, setBudget] = useState(0);
     const [description, setDescription] = useState("");
-    const companyId = session?.user.id
  
     const { mutate } = api.post.createPost.useMutation({
     onSuccess: () => {
