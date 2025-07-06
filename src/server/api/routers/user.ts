@@ -25,7 +25,7 @@ export const userRouter = createTRPCRouter({
             role: z.string().optional(),
             bio: z.string().optional(),
             rating: z.number().optional(),
-            skills: z.array(z.string()),
+            skills: z.array(z.string()).optional(),
         }))
         .mutation(async ({ctx, input}) => {
             return await ctx.db.user.update({

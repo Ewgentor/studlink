@@ -50,7 +50,6 @@ export const postRouter = createTRPCRouter({
       deadline: z.string(),
       budget: z.number(),
       description: z.string(),
-      companyId: z.string(),
     }))
     .mutation(async ({ctx, input}) => {
       return ctx.db.project.create({
@@ -60,7 +59,7 @@ export const postRouter = createTRPCRouter({
           budget: input.budget,
           deadline: input.deadline,
           category: input.category,
-          companyId: input.companyId,
+          companyId: ctx.session.user.id
         }
       })
     }),

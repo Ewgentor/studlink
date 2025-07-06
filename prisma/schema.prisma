@@ -32,7 +32,7 @@ model Bid {
   project   Project @relation(fields: [projectId], references: [id])  
   projectId String
   createdAt DateTime @default(now())    
-  status    String // "pending", "accepted", "rejected"  
+  status    String @default("pending") // "pending", "accepted", "rejected"  
 }  
 
 
