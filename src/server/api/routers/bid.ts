@@ -10,7 +10,7 @@ export const bidRouter = createTRPCRouter({
     getByProjectId: protectedProcedure
         .input(z.string())
         .query(async ({ctx, input}) => {
-            const bids = ctx.db.bid.findMany({
+            const bids = await ctx.db.bid.findMany({
                 where: {
                     projectId: input,
                 }
@@ -23,12 +23,30 @@ export const bidRouter = createTRPCRouter({
             message: z.string(),
         }))
         .mutation(async ({ctx, input}) => {
-            return ctx.db.bid.create({
+            return await ctx.db.bid.create({
                 data: {
                     message: input.message,
                     studentId: ctx.session.user.id,
                     projectId: input.projectId,
                 }
+            })
+        }),
+    changeBid: protectedProcedure
+        .input(z.object({
+            bidId: z.string(),
+            message: z.string().optional(),
+            status: z.string().optional(),
+        }))
+        .mutation(async ({ctx, input}) => {
+            const data: Record<string, string> = {}
+            input.message ? data.message = input.message : null
+            input.status ? data.status = input.status : null
+
+            return await ctx.db.bid.update({
+                where: {
+                    id: input.bidId
+                },
+                data: data
             })
         })
 })
