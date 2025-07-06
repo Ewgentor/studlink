@@ -63,7 +63,6 @@ export function AuthForm(){
             <textarea placeholder="Description" onChange={(e) => setDescription(e.target.value)}></textarea>
             <button onClick={() =>
                 {mutate({
-                    companyId: session?.user.id ?? "",
                     title: title,
                     deadline: (new Date(deadline)).toISOString(),
                     description: description,
