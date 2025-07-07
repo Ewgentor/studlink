@@ -1,15 +1,15 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { Sludlink_logo } from "./studlink_logo";
+import { Line } from "./line";
 
 export const Header = () => {
   const { data: session } = useSession();
 
   return (
+    <>
     <div className="flex justify-between px-8 py-4 border-b bg-black"> 
-      <div className="place-items-center">
-        <div className="font-bold text-white">StudLink</div>
-        <div className="bg-teal-900 text-white px-2">FREELANCER</div>
-      </div>
+      <Sludlink_logo />
       <div className="flex place-items-center">
         { session?.user ? (
           <div className="flex flex-row gap-10">
@@ -21,5 +21,7 @@ export const Header = () => {
         )}
       </div>
     </div>
+    <Line />
+    </>
   )
 }

@@ -2,6 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { Header } from "./header";
+import { Footer } from "./footer";
 
 import { api } from "~/utils/api";
 
@@ -17,29 +18,32 @@ export default function Home() {
       </Head>
       <Header/>
       <div className="bg-[url(/main.svg)] bg-cover bg-center min-h-screen w-full p-28">
-        <div className="text-white pb-9">
+        <div className="text-white pb-14">
           <h1 className="text-4xl font-bold pb-1">Как решать задачи <br /> на StudLink</h1>
           <p className="font-bold">Идеально для студентов и компаний</p>
         </div>
-        <div className="text-white flex justify-around text-3xl px-7">
+        <div className="text-white flex justify-between text-3xl px-7">
           <ul className="list-disc *:pb-12">
-            <li>Objective</li>
-            <li>Objective</li>
-            <li>Objective</li>
-            <li>Objective</li>
+            <li>Мы крутые</li>
+            <li>Лучше чем VK-помойка</li>
+            <li>И MAX тоже</li>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
           </ul>
           <ul className="list-disc *:pb-12">
-            <li>Objective</li>
-            <li>Objective</li>
-            <li>Objective</li>
-            <li>Objective</li>
+            <li>Lorem ipsum dolor sit.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>У меня 12 фрагов</li>
+            <li>и 10000 урона на бабахе</li>
           </ul>
         </div>
       </div>
-      <AuthShowcase />
+      <Footer />
+      {/* <AuthShowcase />
       <div>
         {projects.data?.map((projects) => (<div className="text-black" key={projects.id}>{projects.title}</div>))}
-      </div>
+      </div> */}
     </>
   );
 }
