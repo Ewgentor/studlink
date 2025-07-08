@@ -16,7 +16,7 @@ export const Footer = () => {
                 <a href="#">О нас</a>
                 <a href="#">Пользовательское соглашение</a>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col">
                 <h2 className="font-bold text-xl">Contact</h2>
                 <a href="#">yfgsyfga@gamil.com</a>
                 <div className="flex">
@@ -28,7 +28,7 @@ export const Footer = () => {
                     <a className="pl-2" href="#">Вконтакте</a>
                 </div>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col">
                 <h2 className="font-bold text-xl">Help</h2>
                 <div className="flex">
                     <Image src="/vopros.svg" alt="" width={24} height={24}/>
