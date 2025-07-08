@@ -19,11 +19,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Header/>
       <div className={geist.className}>
+        <Header/>
         <Component {...pageProps} />
+        <Footer/>
       </div>
-      <Footer/>
     </SessionProvider>
   );
 };
