@@ -12,14 +12,16 @@ export const Header = () => {
       <div className="flex items-center">
         <Sludlink_logo />
         <div className="flex justify-content-around">
-          <a href="#" className=" text-white px-10"> Задачи </a>
+          {
+            session?.user ? <a href="#" className=" text-white px-10"> Задачи </a> : null
+          }
         </div>
       </div>
       
       <div className="flex place-items-center">
         { session?.user ? (
           <div className="flex flex-row gap-10">
-            <a href="#" className="cursor-pointer text-white" >{ session.user.name }</a>
+            <a href="/user" className="cursor-pointer text-white" >{ session.user.name }</a>
             <button className="cursor-pointer text-white" onClick={() => void signOut()}>Выйти</button>
           </div>
         ) : (

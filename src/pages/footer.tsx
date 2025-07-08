@@ -18,7 +18,7 @@ export const Footer = () => {
             </div>
             <div className="flex flex-col">
                 <h2 className="font-bold text-xl">Contact</h2>
-                <a href="#">yfgsyfga@gamil.com</a>
+                <a href="#">studlink-support@gamil.com</a>
                 <div className="flex">
                     <Image src="/tg-logo.svg" alt="" width={24} height={24} />
                     <a className="pl-2" href="#">Telegram</a>
