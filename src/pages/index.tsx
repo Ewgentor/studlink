@@ -7,8 +7,6 @@ import { Footer } from "./footer";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
-  const projects = api.post.getAll.useQuery();
   return (
     <>
       <Head>
@@ -21,8 +19,8 @@ export default function Home() {
           <h1 className="text-4xl font-bold pb-1">Как решать задачи <br /> на StudLink</h1>
           <p className="font-bold">Идеально для студентов и компаний</p>
         </div>
-        <div className="text-white flex justify-between text-3xl px-7">
-          <ul className="list-disc *:pb-12">
+        <div className="text-white flex justify-between text-3xl px-7 [&_li]:text-wrap">
+          <ul className="list-disc *:pb-12 pe-5">
             <li>Регистрируйтесь как студент</li>
             <li>Откликайтесь на проекты</li>
             <li>Получайте опыт и заработок</li>
