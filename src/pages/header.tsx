@@ -9,10 +9,7 @@ export const Header = () => {
   return (
     <>
     <div className="flex justify-between px-8 py-4 border-b bg-black"> 
-      <div className="flex justify-end">
-        <Sludlink_logo />
-        <a href="" className="text-white">Создать</a>
-      </div>
+      <Sludlink_logo />
       <div className="flex place-items-center">
         { session?.user ? (
           <div className="flex flex-row gap-10">
