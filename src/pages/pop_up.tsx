@@ -45,7 +45,7 @@ export default function PopUp({open, setOpen}: { open: boolean, setOpen: (v: boo
                   <div className="flex flex-col gap-6 flex-1 relative">
                     {/* Блок с аватаркой, ником, почтой, лайком */}
                     <div className="flex items-center gap-4 mb-4">
-                      <img src={session?.user?.image || "/avatar.png"} alt="avatar" className="w-16 h-16 rounded-full border-4 border-white shadow-lg" />
+                      <img src={session?.user?.image ?? "/avatar.png"} alt="avatar" className="w-16 h-16 rounded-full border-4 border-white shadow-lg" />
                       <div className="flex flex-col">
                         <div className="flex items-center gap-2">
                           <span className="text-white text-xl font-bold">{session?.user?.name}</span>

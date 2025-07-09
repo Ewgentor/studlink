@@ -1,11 +1,8 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import { Header } from "./header";
-import { Footer } from "./footer";
 import { useRouter } from "next/router";
 
-import { api } from "~/utils/api";
 import { useEffect } from "react";
 
 
@@ -17,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      router.push("/welcome");
+      void router.push("/welcome");
     }
   }, [status, router]);
 
@@ -50,9 +47,6 @@ export default function Home() {
           </ul>
         </div>
       </div>
-      {/*<div>
-        {projects.data?.map((projects) => (<div className="text-black" key={projects.id}>{projects.title}</div>))}
-      </div> */}
     </>
   );
 }

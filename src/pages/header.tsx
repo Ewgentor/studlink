@@ -28,7 +28,7 @@ export const Header = () => {
         { session?.user ? (
           <div className="flex flex-row gap-10">
             <div className="flex items-center gap-3">
-              <img src={session.user.image || "/avatar.png"} alt="avatar" className="w-10 h-10 rounded-full border-2 border-white" />
+              <img src={session.user.image ?? "/avatar.png"} alt="avatar" className="w-10 h-10 rounded-full border-2 border-white" />
               <div className="flex flex-col items-start">
                 <span className="text-white font-bold leading-tight">{session.user.name}</span>
                 <span className="text-white text-xs opacity-80">{session.user.email}</span>

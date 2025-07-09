@@ -13,7 +13,7 @@ export default function Test(){
     const {data: session, status} = useSession();
     useEffect(() => {
         if (status === "unauthenticated") {
-            router.push("/");
+            void router.push("/");
             }
           }, [status, router]);
     return (
@@ -45,10 +45,10 @@ export function AuthForm({ session }: { session: Session }){
             setDeadline("");
             setBudget(0);
             setDescription("");
-            router.push("/jobs")
+            void router.push("/jobs")
         },
     onError: (error) => {
-        console.log(`Error creating post: ${error}`)
+        console.log(`Error creating post:`, error)
     }
     })
 
