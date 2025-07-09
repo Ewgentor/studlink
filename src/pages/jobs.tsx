@@ -1,7 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import { Header } from "./header";
+import { Header } from "../components/header";
 import { useRouter } from "next/router";
 
 import { api } from "~/utils/api";

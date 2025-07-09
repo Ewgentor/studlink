@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import PopUp from "./pop_up";
+import PopUp from "../components/pop_up";
 
 export default function Welcome() {
     const router = useRouter();
