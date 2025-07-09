@@ -39,8 +39,8 @@ export const bidRouter = createTRPCRouter({
         }))
         .mutation(async ({ctx, input}) => {
             const data: Record<string, string> = {}
-            input.message ? data.message = input.message : null
-            input.status ? data.status = input.status : null
+            if (input.message) data.message = input.message;
+            if (input.status) data.status = input.status;
 
             return await ctx.db.bid.update({
                 where: {

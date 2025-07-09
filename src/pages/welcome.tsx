@@ -22,7 +22,7 @@ export default function Welcome() {
     <>
       <Head>
         <title>StudLink</title>
-        <meta name="description" content="Поздравляем с успешной регистрацией!" />
+        <meta name="description" content="" />
       </Head>
       <div className="min-h-screen flex flex-col justify-between bg-black">
         <main className="flex-1 flex flex-row items-center justify-between px-16 py-8">
