@@ -18,7 +18,7 @@ export default function MyPoject() {
 
     const deleteBid = api.bid.deleteBid.useMutation({
       onSuccess: () => {
-          utils.bid.invalidate();
+          void utils.bid.invalidate();
       },
     })
 

@@ -26,8 +26,8 @@ export default function Orders() {
   const utils = api.useUtils();
   const createBid = api.bid.createBid.useMutation({
     onSuccess: () => {
-        utils.bid.invalidate();
-        utils.post.invalidate();
+        void utils.bid.invalidate();
+        void utils.post.invalidate();
     }
   });
 
