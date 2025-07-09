@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import {useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 

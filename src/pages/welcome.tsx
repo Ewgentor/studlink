@@ -33,7 +33,7 @@ export default function Welcome() {
                 </div>
                 <div className="bg-black bg-opacity-80 p-8 rounded-xl shadow-lg">
                     <h3 className="text-white text-xl font-bold mb-4">Либо перейти к заказам</h3>
-                    <Link href="/jobs">
+                    <Link href="/orders">
                         <button className="bg-cyan-800 hover:bg-cyan-700 text-white font-bold py-2 px-8 rounded w-full">Перейти</button>
                     </Link>
                 </div>
@@ -44,7 +44,6 @@ export default function Welcome() {
 
         </main>
       </div>
-      <PopUp open={open} setOpen={setOpen}/>
     </>
   );
 }

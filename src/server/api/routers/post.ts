@@ -1,4 +1,4 @@
-import { z } from "zod";
+ import { z } from "zod";
 
 import {
   createTRPCRouter,
@@ -15,12 +15,13 @@ export const postRouter = createTRPCRouter({
       return projects ?? null
     }),
 
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
+  getByCompanyId: protectedProcedure
+    .input(z.string())
+    .query(async ({ctx, input}) => {
+      return await ctx.db.project.findMany({
+        orderBy: {createdAt: "desc"},
+        where: {companyId: input}
+      })
     }),
 
   // create: protectedProcedure

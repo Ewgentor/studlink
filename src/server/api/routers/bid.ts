@@ -48,5 +48,14 @@ export const bidRouter = createTRPCRouter({
                 },
                 data: data
             })
+        }),
+    countByProjectId: protectedProcedure
+        .input(z.string())
+        .query(async ({ctx, input}) => {
+            return await ctx.db.bid.count({
+                where:{
+                    projectId: input
+                }
+            })
         })
 })
