@@ -41,9 +41,9 @@ export default function Welcome() {
             <div className="hidden md:block ml-12">
                 <Image src="/wellcome.png" alt="Welcome" width={1230} height={700} className="rounded-xl shadow-2xl" />
             </div>
-
         </main>
       </div>
+      <PopUp open={open} setOpen={setOpen}/>
     </>
   );
 }

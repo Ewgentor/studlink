@@ -64,6 +64,7 @@ export function AuthForm({ session }: { session: Session }){
                     <select className="bg-white text-black rounded-lg p-2 border-1 border-solid shadow-lg shadow-cyan-500/50" onChange={(e) => setCategory(e.target.value)}>
                         <option value="Frontend">Frontend</option>
                         <option value="Backend">Backend</option>
+                        <option value="1С">1С</option>
                         <option value="Ремонт">Ремонт</option>
                         <option value="Настройка">Настройка</option>
                         <option value="Установка ПО">Установка ПО</option>
