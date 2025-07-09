@@ -22,7 +22,15 @@ export default function Orders() {
   const projects = session?.user.role === "company" 
     ? api.post.getByCompanyId.useQuery(session?.user.id ?? "") 
     : api.post.getAll.useQuery();
-  
+    
+  const utils = api.useUtils();
+  const createBid = api.bid.createBid.useMutation({
+    onSuccess: () => {
+        utils.bid.invalidate();
+        utils.post.invalidate();
+    }
+  });
+
   const bidsCountQueries = api.useQueries((t) => {
     return projects.data?.map((project) => 
       t.bid.countByProjectId(project.id)
@@ -34,6 +42,12 @@ export default function Orders() {
       void router.push("/");
     }
   }, [status, router]);
+
+   const handleCreateBid = (projectId: string) => {
+      createBid.mutate({
+        projectId: projectId,
+      })
+  }
 
   const filteredProjects = projects.data?.filter(project => {
     const matchesSearch = 
@@ -109,7 +123,7 @@ export default function Orders() {
                         </div>
                         <p className="w-sm text-wrap max-w-[300px]">{project.description}</p>
                         <div className="flex justify-end">
-                          <button className="text-lg font-bold bg-teal-900 py-1 px-10 rounded-xl hover:bg-teal-800 transition-colors">
+                          <button className="text-lg font-bold bg-teal-900 py-1 px-10 rounded-xl hover:bg-teal-800 transition-colors" onClick={() => handleCreateBid(project.id)}>
                             Откликнуться
                           </button>
                         </div>

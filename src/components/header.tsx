@@ -19,7 +19,7 @@ export const Header = () => {
         </Link>
         <div className="flex justify-content-around">
           {
-            session?.user.role === "company" && <Link href="/jobs" className=" text-white ml-20 font-bold"> Создать <br /> задание </Link>
+            session?.user.role === "company" ? <Link href="/jobs" className=" text-white ml-20 font-bold"> Создать <br /> задание </Link> : <Link href="/bid" className=" text-white ml-20 font-bold"> Список <br /> откликов </Link>
           }
             <Link href="/orders" className=" text-white ml-20 font-bold"> {session?.user.role === "company" ? "Список" : "Поиск"} <br /> заданий </Link>
         </div>

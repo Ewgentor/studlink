@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 import {
@@ -20,12 +21,22 @@ export const bidRouter = createTRPCRouter({
     createBid: protectedProcedure
         .input(z.object({
             projectId: z.string(),
-            message: z.string(),
         }))
         .mutation(async ({ctx, input}) => {
+            const existingBid = await ctx.db.bid.findFirst({
+                where: {
+                    projectId: input.projectId,
+                    studentId: ctx.session.user.id
+                }
+            })
+            if (existingBid) {
+                throw new TRPCError({
+                    code: "CONFLICT",
+                    message: "Вы уже откликнулись на это задание"
+                })
+            }
             return await ctx.db.bid.create({
                 data: {
-                    message: input.message,
                     studentId: ctx.session.user.id,
                     projectId: input.projectId,
                 }
@@ -57,5 +68,29 @@ export const bidRouter = createTRPCRouter({
                     projectId: input
                 }
             })
+        }),
+    getByStudentId: protectedProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      return await ctx.db.bid.findMany({
+        where: { studentId: input },
+        include: {
+          project: {
+            include: {
+              company: true
+            }
+          }
+        },
+        orderBy: { createdAt: 'desc' }
+      });
+    }),
+    deleteBid: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ctx, input}) => {
+        return await ctx.db.bid.delete({
+            where: {
+                id: input
+            }
         })
+    })
 })

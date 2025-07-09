@@ -32,7 +32,9 @@ export default function Welcome() {
                     <button onClick={() => setOpen(true)} className="bg-cyan-800 hover:bg-cyan-700 text-white font-bold py-2 px-8 rounded w-full mb-4">Начать</button>
                 </div>
                 <div className="bg-black bg-opacity-80 p-8 rounded-xl shadow-lg">
-                    <h3 className="text-white text-xl font-bold mb-4">Либо перейти к заказам</h3>
+                    <h3 className="text-white text-xl font-bold mb-4">
+                      {session?.user.role === "company" ? "Либо перейти к заказам" : "Либо перейти к заданиям"}     
+                      </h3>
                     <Link href="/orders">
                         <button className="bg-cyan-800 hover:bg-cyan-700 text-white font-bold py-2 px-8 rounded w-full">Перейти</button>
                     </Link>
