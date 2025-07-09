@@ -29,11 +29,12 @@ export const userRouter = createTRPCRouter({
         }))
         .mutation(async ({ctx, input}) => {
             const data: Record<string, string | number | Array<string>> = {}
-            input.name ? data.name = input.name : null;
-            input.role ? data.role = input.role : null;
-            input.bio ? data.bio = input.bio : null;
-            input.rating ? data.rating = input.rating : null;
-            input.skills ? data.skills = input.skills : null;
+            input.name && (data.name = input.name);
+            input.role && (data.role = input.role);
+            input.bio && (data.bio = input.bio);
+            input.rating && (data.rating = input.rating);
+            input.skills && (data.skills = input.skills);
+
 
             return await ctx.db.user.update({
                 where: {
