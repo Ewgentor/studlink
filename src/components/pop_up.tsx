@@ -1,8 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-
 
 
 export default function PopUp({open, setOpen}: { open: boolean, setOpen: (v: boolean) => void }) {

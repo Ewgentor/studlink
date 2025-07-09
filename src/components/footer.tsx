@@ -1,4 +1,3 @@
-import { Autour_One } from "next/font/google"
 import Image from "next/image"
 import { Sludlink_logo } from "./studlink_logo"
 import { Line } from "./line"

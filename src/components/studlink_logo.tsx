@@ -1,6 +1,3 @@
-import Link from "next/link"
-
-
 export const Sludlink_logo = () => {
     return (
         <div className="place-items-center content-center">
