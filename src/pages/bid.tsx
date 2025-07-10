@@ -89,12 +89,13 @@ const handleDeleteBid = (bidId: string) => {
                                 </div>
                                 <p className="w-sm text-wrap max-w-[300px]">{bid.project.description}</p>
                                 <div className="flex justify-end gap-4 mt-4">
+                                    {bid.status !== "accepted" &&
                                     <button 
                                       onClick={() => handleDeleteBid(bid.id)}
                                       className="text-lg font-bold bg-red-900 py-1 px-6 rounded-xl hover:bg-red-800 transition-colors"
                                     >
                                       {deleteBid.isPending ? "Загрузка...": "Отозвать"}
-                                    </button>
+                                    </button>}
                                     {bid.status === 'accepted' && (
                                       <Link 
                                         href={`/project/${bid.project.id}`}

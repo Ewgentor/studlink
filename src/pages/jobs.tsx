@@ -43,9 +43,11 @@ export function AuthForm({ session }: { session: Session }){
             setDeadline("");
             setBudget(0);
             setDescription("");
+            alert("Задание создано успешно!")
             void router.push("/jobs")
         },
     onError: (error) => {
+        alert("Не удалось создать задание")
         console.log(`Error creating post:`, error)
     }
     })
@@ -103,7 +105,7 @@ export function AuthForm({ session }: { session: Session }){
                         category: category,
                     })
                 }
-                } className="text-lg font-bold bg-teal-900 py-3 px-15 rounded-xl mt-15">
+                } className="text-lg font-bold bg-teal-900 py-3 px-15 rounded-xl mt-15 cursor-pointer">
                     Создать заказ
                 </button>
             </div>

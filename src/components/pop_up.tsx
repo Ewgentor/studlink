@@ -101,9 +101,9 @@ export default function PopUp({open, setOpen}: { open: boolean, setOpen: (v: boo
 // Кастомный мультиселект навыков
 function SkillSelect({selected, onSelect}: {selected: string[]; onSelect: (skills: string[]) => void}) {
   const [open, setOpen] = useState(false);
-  const allSkills = ["Frontend", "Backend", "Аналитик"];
+  const allSkills = ["Frontend", "Backend", "Аналитик", "Дизайнер"];
   return (
-    <div className="relative min-h-50 min-w-80 overflow-hidden">
+    <div className="relative min-h-50 min-w-80">
       <div
         className="w-full rounded-lg border border-gray-300 px-4 py-3 bg-white text-black cursor-pointer flex justify-between items-center min-h-13"
         onClick={() => setOpen((v) => !v)}
@@ -112,7 +112,7 @@ function SkillSelect({selected, onSelect}: {selected: string[]; onSelect: (skill
         <svg className={`w-4 h-4 ml-2 transition-transform ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
       </div>
       {open && (
-        <div className="absolute left-0 right-0 mt-2 bg-white rounded-lg shadow-lg z-10">
+        <div className="absolute left-0 right-0 mt-2 bg-white rounded-lg shadow-lg z-10 max-h-40 overflow-y-auto">
           {allSkills.map((skill) => (
             <div
               key={skill}

@@ -14,6 +14,17 @@ export const bidRouter = createTRPCRouter({
             const bids = await ctx.db.bid.findMany({
                 where: {
                     projectId: input,
+                },
+                include:{
+                    student:{
+                        select: {
+                            id: true,
+                            name: true,
+                            rating: true,
+                            skills: true,
+                            email: true,
+                        }
+                    }
                 }
             })
             return bids
@@ -69,6 +80,16 @@ export const bidRouter = createTRPCRouter({
                 }
             })
         }),
+    getBidByPrStIds: protectedProcedure
+    .input(z.string())
+    .query(async ({ctx, input}) => {
+        return await ctx.db.bid.findFirst({
+            where:{
+                studentId: ctx.session.user.id,
+                projectId: input
+            }
+        })
+    }),
     getByStudentId: protectedProcedure
     .input(z.string())
     .query(async ({ ctx, input }) => {

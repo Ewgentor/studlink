@@ -101,7 +101,7 @@ export default function Orders() {
           </div>
           <p className="pb-6 text-lg">Найдено {filteredProjects.length} заданий</p>
 
-          <div className="space-y-6">
+          <div className="space-y-6 max-h-[70vh] overflow-y-auto pr-2">
             {filteredProjects.map((project, index) => {
               const bidsCount = bidsCountQueries[index]?.data ?? 0;
               return (
@@ -123,9 +123,20 @@ export default function Orders() {
                         </div>
                         <p className="w-sm text-wrap max-w-[300px]">{project.description}</p>
                         <div className="flex justify-end">
-                          <button className="text-lg font-bold bg-teal-900 py-1 px-10 rounded-xl hover:bg-teal-800 transition-colors" onClick={() => handleCreateBid(project.id)}>
+                          {session?.user.role === "company" ? 
+                          <Link href={`/project/${project.id}`}>
+                          <button className="text-lg font-bold bg-teal-900 py-1 px-10 rounded-xl hover:bg-teal-800 transition-colors">
+                            Подробнее
+                          </button>
+                          </Link>
+                          : 
+                          <button className="text-lg font-bold bg-teal-900 py-1 px-10 rounded-xl hover:bg-teal-800 transition-colors" onClick={() => {
+                            handleCreateBid(project.id);
+                            alert("Отклик создан!")
+                            }}>
                             Откликнуться
                           </button>
+                          }
                         </div>
                       </div>
                       {session?.user.role === "company" && (
