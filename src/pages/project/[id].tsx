@@ -56,7 +56,7 @@ export default function MyProject() {
     return session?.user.role === "company" ? (
       <>
         <Head>
-          <title>StudLink - Задание "{dataTitle?.title ?? "Загрузка..."}" </title>
+          <title>StudLink - Задание {dataTitle?.title ?? "Загрузка..."} </title>
           <meta name="description" content="Конкретное задание" />
         </Head>
         
@@ -76,11 +76,11 @@ export default function MyProject() {
                 <tbody>
                 {projectBids.map((bid) => (
                     bid.status !== "rejected" &&
-                  <tr className="bg-black/60 rounded-lg text-center">
+                  <tr key={bid.id} className="bg-black/60 rounded-lg text-center">
                     <td className="py-2 font-medium">{bid.student.name}</td>
                     <td className="py-2"> 
                       {bid.student.skills.map((skill) => (
-                        <p>{skill + " "}</p>
+                        <p key={skill}>{skill + " "}</p>
                       ))}
                     </td>
                     <td className="py-2 flex justify-center">
@@ -126,7 +126,7 @@ export default function MyProject() {
     ) : (
         <>
         <Head>
-          <title>StudLink - Задание "{dataTitle?.title ?? "Загрузка..."}" </title>
+          <title>StudLink - Задание {dataTitle?.title ?? "Загрузка..."} </title>
           <meta name="description" content="Конкретное задание" />
         </Head>
         <div className="min-h-screen bg-[url(/robot.png)] bg-cover bg-center text-white p-8">
